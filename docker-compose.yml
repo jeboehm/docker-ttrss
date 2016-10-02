@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ttrss
+      MYSQL_DATABASE: ttrss
+    volumes:
+      - data-db:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+
+  ttrss:
+    build: .
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASS: ttrss
+      DB_NAME: ttrss
+    read_only: true
+    links:
+      - db:mysql
+    ports:
+      - "127.0.0.1:8080:80"
+    tmpfs:
+      - /tmp
+      - /var/lib/nginx/tmp
+      - /var/www/html/lock
+
+volumes:
+  data-db:
+    driver: local
