@@ -16,7 +16,7 @@ RUN apk --no-cache add \
       wget \
       ca-certificates \
       libmcrypt-dev \
-      libpng-dev vim && \
+      libpng-dev && \
     docker-php-ext-install -j4 \
       mcrypt \
       gd \
