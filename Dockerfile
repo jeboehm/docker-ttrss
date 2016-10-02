@@ -28,7 +28,7 @@ RUN apk --no-cache add \
     update-ca-certificates
 
 RUN wget -q -O- $TTRSS_URL | tar -xzC . --strip-components 1 && \
-    wget -q -O- $FEVER_URL | tar -xzC plugins.local/ --strip-components 2 --one-top-level=fever && \
+    wget -q -O- $FEVER_URL | tar -xzC plugins/ --strip-components 2 --one-top-level=fever && \
     ln -sf /tmp/config.php config.php
 COPY rootfs/ /
 
