@@ -34,7 +34,10 @@ RUN wget -q -O- $TTRSS_URL | tar -xzC . --strip-components 1 && \
       mv /tmp/feedly.css /tmp/feedly themes/ && \
       sed -e "s/1.15.3/16.8/g" -i themes/feedly.css && \
     rm -rf /tmp/* && \
-    ln -sf /tmp/config.php config.php
+    ln -sf /tmp/config.php config.php && \
+    rm -rf /var/lib/nginx/tmp /var/www/html/lock && \
+    ln -sf /tmp /var/lib/nginx/tmp && \
+    ln -sf /tmp /var/www/html/lock
 COPY rootfs/ /
 
 EXPOSE 80
