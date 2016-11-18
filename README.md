@@ -1,6 +1,8 @@
 docker-ttrss
 ============
 
+[![Build Status](https://travis-ci.org/jeboehm/docker-ttrss.svg?branch=master)](https://travis-ci.org/jeboehm/docker-ttrss)
+
 [Tiny Tiny RSS](https://tt-rss.org/) Docker Image.
 
 Default user: admin / password
