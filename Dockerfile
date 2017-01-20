@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM jeboehm/php-base:latest
 MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
 
 ENV SELF_URL_PATH=http://localhost \
@@ -13,20 +13,9 @@ ENV SELF_URL_PATH=http://localhost \
 
 RUN apk --no-cache add \
       nginx \
-      supervisor \
-      wget \
-      ca-certificates \
-      libmcrypt-dev \
-      libpng-dev && \
-    docker-php-ext-install -j4 \
-      mcrypt \
-      gd \
-      mysqli \
-      pdo_mysql && \
+      supervisor && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log && \
-    ln -s /usr/local/bin/php /usr/bin/php && \
-    update-ca-certificates
+    ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN wget -q -O- $TTRSS_URL | tar -xzC . --strip-components 1 && \
     wget -q -O- $FEVER_URL | tar -xzC plugins/ --strip-components 2 --one-top-level=fever && \
