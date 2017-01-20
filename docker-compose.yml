@@ -8,8 +8,6 @@ services:
       MYSQL_DATABASE: ttrss
     volumes:
       - data-db:/var/lib/mysql
-    ports:
-      - "127.0.0.1:3306:3306"
 
   ttrss:
     build: .
