@@ -8,7 +8,7 @@ ENV SELF_URL_PATH=http://localhost \
     DB_USER=ttrss \
     DB_PASS=ttrss \
     TTRSS_URL=https://tt-rss.org/gitlab/fox/tt-rss/repository/archive.tar.gz?ref=master \
-    FEVER_URL=https://github.com/dasmurphy/tinytinyrss-fever-plugin/archive/master.tar.gz \
+    FEVER_URL=https://github.com/jeboehm/tinytinyrss-fever-plugin/archive/master.tar.gz \
     FEEDLY_URL=https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz \
     TTRSS_VERSION=17.1
 
