@@ -1,5 +1,6 @@
-FROM jeboehm/php-nginx-base:latest
-MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
+ARG PHP_VER=7.1
+FROM jeboehm/php-nginx-base:${PHP_VER}
+LABEL maintainer="jeff@ressourcenkonflikt.de"
 
 ENV SELF_URL_PATH=http://localhost \
     DB_HOST=mysql \
