@@ -11,5 +11,5 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 
 Integrated plugins / themes
 ---------------------------
-- [Fever API Plugin](https://github.com/dasmurphy/tinytinyrss-fever-plugin/)
+- [Fever API Plugin](https://github.com/DigitalDJ/tinytinyrss-fever-plugin)
 - [Feedly Theme](https://github.com/levito/tt-rss-feedly-theme)
