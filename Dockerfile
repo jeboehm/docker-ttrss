@@ -1,4 +1,4 @@
-ARG PHP_VER=7.1
+ARG PHP_VER=7.2
 FROM jeboehm/php-nginx-base:${PHP_VER}
 LABEL maintainer="jeff@ressourcenkonflikt.de"
 
@@ -16,11 +16,11 @@ RUN wget -q -O- ${TTRSS_URL} | tar -xzC . --strip-components 1 && \
     wget -q -O- ${FEVER_URL} | tar -xzC plugins/ --strip-components 1 --one-top-level=fever && \
     wget -q -O- ${FEEDLY_URL} | tar -xzC /tmp --strip-components 1 && \
       mv /tmp/feedly.css /tmp/feedly themes/ && \
-    rm -rf /tmp/* /var/www/html/lock && \
-    ln -sf /tmp/config.php config.php && \
-    ln -sf /tmp /var/www/html/lock
+    rm -rf /tmp/* && \
+    ln -sf /tmp/config.php config.php
+
 COPY rootfs/ /
 
-VOLUME ["/var/www/html/feed-icons", "/var/www/html/cache"]
+VOLUME ["/var/www/html/feed-icons"]
 
 CMD ["/usr/local/bin/entrypoint.sh"]

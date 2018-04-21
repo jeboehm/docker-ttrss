@@ -16,13 +16,11 @@ services:
       DB_USER: root
       DB_PASS: ttrss
       DB_NAME: ttrss
-    read_only: true
+      SELF_URL_PATH: http://localhost:8080/
     links:
       - db:mysql
     ports:
       - "127.0.0.1:8080:80"
-    tmpfs:
-      - /tmp
 
 volumes:
   data-db:
