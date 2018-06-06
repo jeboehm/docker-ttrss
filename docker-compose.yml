@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   db:
@@ -12,15 +12,22 @@ services:
   ttrss:
     build: .
     environment:
-      DB_HOST: mysql
+      DB_HOST: db
       DB_USER: root
       DB_PASS: ttrss
       DB_NAME: ttrss
-      SELF_URL_PATH: http://localhost:8080/
-    links:
-      - db:mysql
+      SELF_URL_PATH: http://ttrss.local/
+      VIRTUAL_HOST: ttrss.local
+      LETSENCRYPT_HOST: ttrss.local
+      LETSENCRYPT_EMAIL: jeff@example.com
+
+  # This is only an example.
+  proxy:
+    image: jwilder/nginx-proxy:latest
     ports:
-      - "127.0.0.1:8080:80"
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
 
 volumes:
   data-db:
