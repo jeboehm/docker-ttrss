@@ -5,7 +5,11 @@ services:
 
 env:
   global:
-    - DOCKER_COMPOSE_VERSION=1.7.1
+    - DOCKER_COMPOSE_VERSION=1.21.2
+
+addons:
+  hosts:
+    - ttrss.local
 
 before_install:
  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -19,4 +23,4 @@ script:
  - docker-compose up -d
  - sleep 60
  - docker ps | grep -q ttrss
- - curl -q http://127.0.0.1:8080
+ - curl -q http://ttrss.local/ | grep /html
